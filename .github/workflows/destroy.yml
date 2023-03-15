@@ -2,11 +2,6 @@ name: aws-destroy
 
 on:
   workflow_dispatch:
-     inputs : 
-      region :
-        description: "Enter your region : "
-        required: true  
-        type: string    
 
 env:
   BUCKET: pitambar
