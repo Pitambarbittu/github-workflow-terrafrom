@@ -8,7 +8,7 @@ env:
   aws_region: us-east-1
 
 jobs:
-    destroy_bucket:
+  destroy_bucket:
       name: destroy
       runs-on: ubuntu-latest
       steps:
@@ -33,4 +33,4 @@ jobs:
         - name: destroy
           run: |
             cd module
-            terraform destroy -auto-approve
+            terraform destroy -auto-approve  
