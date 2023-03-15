@@ -6,6 +6,11 @@ variable "instance_type" {
   type        = string
 }
 
+variable "instance_name" {
+  type        = string
+}
+
+
 variable "tag_name" {
   type = map(any)
 }

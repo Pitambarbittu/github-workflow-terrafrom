@@ -1,5 +1,6 @@
 module "ec2" {
   source = "../ec2"
+  instance_name = var.instance_name
   for_each = var.ec2
   ami = each.value["ami"]
   instance_type = each.value["Instance_type"]
