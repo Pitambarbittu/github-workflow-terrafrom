@@ -8,12 +8,12 @@ on:
         required: true  
         type: string
 
-      action:
-        description: 'Terraform Action to Perform'
-        type: choice
-        options:
-        - Terraform_apply
-        - Terraform_destroy      
+      # action:
+      #   description: 'Terraform Action to Perform'
+      #   type: choice
+      #   options:
+      #   - Terraform_apply
+      #   - Terraform_destroy      
 
 env:
   BUCKET: pitambar
@@ -50,37 +50,46 @@ jobs:
             cd module 
             terraform apply -auto-approve
 
-  terraform_destroy:
-    name: "Terraform_destroy"
-    if: ${{ github.event.inputs.action == 'Terraform_destroy' }}
-    runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ${{ github.event.inputs.resource }}
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
 
-      - name: Setup Terraform
-        uses: hashicorp/setup-terraform@v2
 
-      - name: Terraform Init
-        id: init
-        run: |
-            cd module
-            terraform init -reconfigure -backend-config="bucket=${{ env.BUCKET }}" -backend-config="key=${{ env.TFSTATE_FILE }}" -backend-config="region=${{ env.aws_region }}"
-        env:
-            AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-            AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-            AWS_DEFAULT_REGION: ${{ secrets.REGION }}
+
+
+
+
+
+
+
+  # terraform_destroy:
+  #   name: "Terraform_destroy"
+  #   if: ${{ github.event.inputs.action == 'Terraform_destroy' }}
+  #   runs-on: ubuntu-latest
+  #   defaults:
+  #     run:
+  #       working-directory: ${{ github.event.inputs.resource }}
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v3
+
+  #     - name: Setup Terraform
+  #       uses: hashicorp/setup-terraform@v2
+
+  #     - name: Terraform Init
+  #       id: init
+  #       run: |
+  #           cd module
+  #           terraform init -reconfigure -backend-config="bucket=${{ env.BUCKET }}" -backend-config="key=${{ env.TFSTATE_FILE }}" -backend-config="region=${{ env.aws_region }}"
+  #       env:
+  #           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+  #           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+  #           AWS_DEFAULT_REGION: ${{ secrets.REGION }}
       
-      - name: Terraform Destroy
-        id: destroy
-        working-directory: ${{ github.event.inputs.resource }}
-        run: |
-            cd module
-            terraform destroy -auto-approve -var-file=variables.tfvars
-        env:
-            AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-            AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-            AWS_DEFAULT_REGION: ${{ secrets.REGION }}
+  #     - name: Terraform Destroy
+  #       id: destroy
+  #       working-directory: ${{ github.event.inputs.resource }}
+  #       run: |
+  #           cd module
+  #           terraform destroy -auto-approve -var-file=variables.tfvars
+  #       env:
+  #           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+  #           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+  #           AWS_DEFAULT_REGION: ${{ secrets.REGION }}
