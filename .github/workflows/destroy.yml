@@ -2,19 +2,13 @@ name: aws-destroy
 
 on:
   workflow_dispatch:
-     inputs : 
-      region :
-        description: "Enter your region : "
-        required: true  
-        type: string
-        
 env:
   BUCKET: pitambar
   TFSTATE_FILE: S3.tfstate
   aws_region: us-east-1
 
 jobs:
-  destroy_bucket:
+    destroy_bucket:
       name: destroy
       runs-on: ubuntu-latest
       steps:
@@ -39,4 +33,4 @@ jobs:
         - name: destroy
           run: |
             cd module
-            terraform destroy -auto-approve  
+            terraform destroy -auto-approve
