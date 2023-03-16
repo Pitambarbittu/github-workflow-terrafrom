@@ -2,7 +2,9 @@ name: aws-deployment
 
 on:
   push:
-  - master
+    branch:
+      - master
+
   # workflow_dispatch:
   #    inputs : 
   #     region :
