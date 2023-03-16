@@ -55,7 +55,7 @@ jobs:
             terraform apply -auto-approve
    
 
-jobs:
+
   Terraform_destroy :
       runs-on : ubuntu-latest
       steps:
