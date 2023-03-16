@@ -14,8 +14,6 @@ jobs:
       steps:
         - name: CheckOut
           uses: actions/checkout@v3
-        - name: set up terraform hashicorp
-          uses: hashicorp/setup-terraform@v1
 
         - name: configure aws credentials
           uses: aws-actions/configure-aws-credentials@v1
@@ -25,6 +23,9 @@ jobs:
             aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
             aws-region: ${{env.aws_region}}
   
+        - name: set up terraform hashicorp
+          uses: hashicorp/setup-terraform@v2.0.2
+
         - name: terraform init
           run: |
             cd module
