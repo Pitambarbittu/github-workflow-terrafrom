@@ -1,6 +1,6 @@
 name: aws-deployment
 
-
+on:
   workflow_dispatch:
      inputs : 
       region :

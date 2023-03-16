@@ -1,6 +1,8 @@
 name: aws-destroy
 
-
+on:
+  workflow_dispatch:
+  
 env:
   BUCKET: pitambar
   TFSTATE_FILE: s3.tfstate
