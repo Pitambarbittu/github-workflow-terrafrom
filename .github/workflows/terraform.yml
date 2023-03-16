@@ -8,12 +8,12 @@ on:
         required: true  
         type: string
 
-      # action:
-      #   description: 'Terraform Action to Perform'
-      #   type: choice
-      #   options:
-      #   - Terraform_apply
-      #   - Terraform_destroy      
+      action:
+        description: 'Terraform Action to Perform'
+        type: choice
+        options:
+        - Terraform_apply
+        - Terraform_destroy      
 
 env:
   BUCKET: pitambar
@@ -58,7 +58,32 @@ jobs:
 
 
 
+jobs:
+  Terraform_destroy :
+      runs-on : ubuntu-latest
+      steps:
+        - uses: actions/checkout@v3
 
+        - name: Configure AWS Credentials
+          uses: aws-actions/configure-aws-credentials@v1
+          with:
+            aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+            aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+            aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
+            aws-region: ${{ env.aws_region }}
+
+        - name: Terraform hashicorp setup
+          uses: hashicorp/setup-terraform@v2.0.2
+
+        - name: terraform init
+          run: |
+            cd module
+            terraform init -reconfigure -backend-config="bucket=${{ env.BUCKET }}" -backend-config="key=${{ env.TFSTATE_FILE }}" -backend-config="region=${{ env.aws_region }}"
+
+        - name: destroy
+          run: |
+            cd module
+            terraform destroy -auto-approve
 
 
 
