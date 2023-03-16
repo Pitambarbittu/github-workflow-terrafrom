@@ -63,8 +63,8 @@ jobs:
     name: "Terraform_destroy"
     if: ${{ github.event.inputs.action == 'Terraform_destroy' }}
     runs-on : ubuntu-latest
-      steps:
-        - uses: actions/checkout@v3
+    steps:
+      - uses: actions/checkout@v3
 
       - name: Configure AWS Credentials
           uses: aws-actions/configure-aws-credentials@v1
