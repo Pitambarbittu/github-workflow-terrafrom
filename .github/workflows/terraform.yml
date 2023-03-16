@@ -53,11 +53,11 @@ jobs:
           run: |
             cd module 
             terraform apply -auto-approve
-            
-        - name: destroy
-          run: |
-            cd module
-            terraform destroy -auto-approve    
+
+        # - name: destroy
+        #   run: |
+        #     cd module
+        #     terraform destroy -auto-approve    
 
 
 
