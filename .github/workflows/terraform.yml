@@ -55,7 +55,7 @@ jobs:
             terraform apply -auto-approve
    
 
-
+name: aws-destroy
 on:
   workflow_dispatch:
 
