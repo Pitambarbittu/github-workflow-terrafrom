@@ -35,4 +35,4 @@ jobs:
         - name: destroy
           run: |
             cd module
-            terraform destroy -var-file='pitambar' -auto-approve
+            terraform destroy -auto-approve -var-file='pitambar' 
