@@ -1,9 +1,5 @@
 name: aws-deployment
 
-on:
-  push:
-    branch:
-      - master
 
   workflow_dispatch:
      inputs : 

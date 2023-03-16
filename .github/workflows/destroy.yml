@@ -1,10 +1,5 @@
 name: aws-destroy
 
-on:
-  push:
-    branch:
-      - master
-
 
 env:
   BUCKET: pitambar
