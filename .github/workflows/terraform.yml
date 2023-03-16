@@ -55,15 +55,6 @@ jobs:
             terraform apply -auto-approve
    
 
-# name: aws-destroy
-# on:
-#   workflow_dispatch:
-
-env:
-  BUCKET: pitambar
-  TFSTATE_FILE: s3.tfstate
-  aws_region: us-east-1
-
 jobs:
   Terraform_destroy :
       runs-on : ubuntu-latest
