@@ -2,7 +2,7 @@ name: aws-destroy
 
 on:
   workflow_dispatch:
-  
+
 env:
   BUCKET: pitambar
   TFSTATE_FILE: s3.tfstate
@@ -35,4 +35,4 @@ jobs:
         - name: destroy
           run: |
             cd module
-            terraform destroy -auto-approve
+            terraform destroy -var-file='pitambar' -auto-approve
