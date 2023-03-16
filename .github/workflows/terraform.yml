@@ -55,9 +55,9 @@ jobs:
             terraform apply -auto-approve
    
 
-name: aws-destroy
-on:
-  workflow_dispatch:
+# name: aws-destroy
+# on:
+#   workflow_dispatch:
 
 env:
   BUCKET: pitambar
