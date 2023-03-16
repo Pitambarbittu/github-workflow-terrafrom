@@ -4,7 +4,6 @@ on:
   push:
   - master
 
-
 env:
   BUCKET: pitambar
   TFSTATE_FILE: S3.tfstate
