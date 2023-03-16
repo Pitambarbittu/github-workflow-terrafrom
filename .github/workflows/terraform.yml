@@ -21,7 +21,7 @@ on:
 
 env:
   BUCKET: pitambar
-  TFSTATE_FILE: S3.tfstate
+  TFSTATE_FILE: s3.tfstate
   # aws_region: ${{ github.event.inputs.region }}
   aws_region: us-east-1
 
