@@ -53,6 +53,7 @@ jobs:
           run: |
             cd module 
             terraform apply -auto-approve
+  
    
 
 
