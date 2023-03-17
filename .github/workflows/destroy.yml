@@ -1,46 +1,6 @@
-# name: aws-destroy
-
-# on:
-#   workflow_dispatch:
-
-# env:
-#   BUCKET: pitambar
-#   TFSTATE_FILE: s3.tfstate
-#   aws_region: us-east-1
-
-
-# jobs:
-#     destroy_bucket:
-#       name: destroy
-#       runs-on: ubuntu-latest
-#       steps:
-#         - name: CheckOut
-#           uses: actions/checkout@v3
-
-#         - name: configure aws credentials
-#           uses: aws-actions/configure-aws-credentials@v1
-#           with:
-#             aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-#             aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-#             aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
-#             aws-region: ${{env.aws_region}}
-  
-#         - name: set up terraform hashicorp
-#           uses: hashicorp/setup-terraform@v2.0.2
-
-#         - name: terraform init
-#           run: |
-#             cd module
-#             terraform init -reconfigure -backend-config="bucket=${{ env.BUCKET }}" -backend-config="key=${{ env.TFSTATE_FILE }}" -backend-config="region=${{ env.aws_region }}"
-            
-#         - name: destroy
-#           run: |
-#             cd module
-#             terraform destroy -auto-approve
-
-
 #----------------------------------------------------------------------------------------------------------
 
+#Pinkesh sir's Code--
 
 name: aws-destroy
 
@@ -89,3 +49,46 @@ jobs:
         run: |
           cd module
           terraform destroy -auto-approve 
+
+#------------------------------------------------------------------------------------------------------------
+
+# name: aws-destroy
+
+# on:
+#   workflow_dispatch:
+
+# env:
+#   BUCKET: pitambar
+#   TFSTATE_FILE: s3.tfstate
+#   aws_region: us-east-1
+
+
+# jobs:
+#     destroy_bucket:
+#       name: destroy
+#       runs-on: ubuntu-latest
+#       steps:
+#         - name: CheckOut
+#           uses: actions/checkout@v3
+
+#         - name: configure aws credentials
+#           uses: aws-actions/configure-aws-credentials@v1
+#           with:
+#             aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+#             aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+#             aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
+#             aws-region: ${{env.aws_region}}
+  
+#         - name: set up terraform hashicorp
+#           uses: hashicorp/setup-terraform@v2.0.2
+
+#         - name: terraform init
+#           run: |
+#             cd module
+#             terraform init -reconfigure -backend-config="bucket=${{ env.BUCKET }}" -backend-config="key=${{ env.TFSTATE_FILE }}" -backend-config="region=${{ env.aws_region }}"
+            
+#         - name: destroy
+#           run: |
+#             cd module
+#             terraform destroy -auto-approve
+
